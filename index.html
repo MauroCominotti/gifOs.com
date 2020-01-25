@@ -42,7 +42,7 @@
                             <div class="btnTopics" id="changeLinks" onclick="showContent()">
                                 Elegir tema
                                 <div class="btnIcon">
-                                    <img class="downArrow" src="/images/forward.svg" alt="down arrow">
+                                    <img class="downArrow" src="./images/forward.svg" alt="down arrow">
                                 </div>
                             </div>
                             
@@ -97,7 +97,7 @@
                         <div class="title2">
                             <div>
                                 <span id="gifTitle0"></span>
-                                <a href="#"><img src="/images/button3.svg" alt=""></a>
+                                <a href="#"><img src="./images/button3.svg" alt=""></a>
                             </div>
                         </div>
                         <div class="gifBox">
@@ -109,7 +109,7 @@
                         <div class="title2">
                             <div>
                                 <span id="gifTitle1"></span>
-                                <a href="#"><img src="/images/button3.svg" alt=""></a>
+                                <a href="#"><img src="./images/button3.svg" alt=""></a>
                             </div>
                         </div>
                         <div class="gifBox">
@@ -121,7 +121,7 @@
                         <div class="title2">
                             <div>
                                 <span id="gifTitle2"></span>
-                                <a href="#"><img src="/images/button3.svg" alt=""></a>
+                                <a href="#"><img src="./images/button3.svg" alt=""></a>
                             </div>
                         </div>
                         <div class="gifBox">
@@ -133,7 +133,7 @@
                         <div class="title2">
                             <div>
                                 <span id="gifTitle3"></span>
-                                <a href="#"><img src="/images/button3.svg" alt=""></a>
+                                <a href="#"><img src="./images/button3.svg" alt=""></a>
                             </div>
                         </div>
                         <div class="gifBox">
@@ -228,179 +228,8 @@
                     
                 </div>
                 
-                
-                <!-- CREAR GIFS! /////////////////////////////////////////////////////////////////// '7'-->
-                <div class="d-none" id="makingGifs"> <!-- Empieza el matches2 -->
-                    <div class="row pad1">
-                        <div class="col-2 p-0 ml-24">
-                            <img src="images/arrow.svg" alt="" id="arrowBack"> 
-                            <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="createGifs">
-                            <div class="createBox">
-                                <div class="title1">
-                                    Crear gifos
-                                </div>
-                                <div class="instructions">
-                                    <div class="titleInstructions">Aquí podrás crear tus propios guifos</div>
-                                    <div class="steps">
-                                        Crear tu <span>guifo</span> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los
-                                        pasos para crear tu guifo son: <br>
-                                        
-                                        <div> <span>1)</span> Dar permisos de acceso a la cámara (sólo por el tiempo de uso)<br></div>
-                                        <div><span>2)</span> Capturar tu momento guifo<br></div>
-                                        <div> <span>3)</span> Revisar el momento<br></div>
-                                        <div><span>4)</span> Listo para subir y compartir!<br></div>
-                                        <div>¿Quieres comenzar a crear tu guifo ahora?</div>
-                                    </div>
-                                    
-                                    <button id="cancelGif" class="btnTopics pr">Cancelar</button>
-                                    <button id="startGif" class="btnTopics pr">Comenzar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- GENERAR GIFS ////////////////////////////////////////////////////////////////////////////////////-->
-                    <div class="d-none">
-                        <div class="row pad1">
-                            <div class="col-2 p-0 ml-24">
-                                <img src="images/arrow.svg" alt="" id="arrowBack2"> <!-- Deberia de ponerla en ::before -->
-                                <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="createGifs">
-                                <div id="generatingGif" class="videoBox">
-                                    <div class="title1">
-                                        Un chequeo antes de empezar
-                                    </div>
-                                    <div class="videoFrame">
-                                        <video autoplay width="832px" height="434px" controls></video>
-                                        <img id="finishedGif" class="d-none" src="#" alt="">
-                                        <div id="sending-gif" class="sending-gif d-none">
-                                            <img src="/images/globe_img.png" alt="icono de globo terraqueo">
-                                            <p>Estamos subiendo tu guifo...</p>
-                                            
-                                            <div class="progress-bar-container ml-0 w-240">
-                                                
-                                                <div class="video-progress-bar">
-                                                    <div class="cell1"></div>
-                                                    <div class="cell2"></div>
-                                                    <div class="cell3"></div>
-                                                    <div class="cell4"></div>
-                                                    <div class="cell5"></div>
-                                                    <div class="cell6"></div>
-                                                    <div class="cell7"></div>
-                                                    <div class="cell8"></div>
-                                                    <div class="cell9"></div>
-                                                    <div class="cell10"></div>
-                                                    <div class="cell11"></div>
-                                                    <div class="cell12"></div>
-                                                    <div class="cell13"></div>
-                                                    <div class="cell14"></div>
-                                                    <div class="cell15"></div>
-                                                    <div class="cell16"></div>
-                                                    <div class="cell17"></div>
-                                                </div>
-                                                
-                                            </div>
-                                            
-                                            <p>Tiempo restante: <span>30 años</span> algunos minutos</p>
-                                        </div>
-                                        
-                                        
-                                        
-                                        
-                                    </div>
-                                    
-                                    <div class="video-buttons">
-                                        <div id="timerBlock" class="timer d-none">
-                                        </div>
-                                        
-                                        <div id="progressBar" class="progress-bar-container d-none">
-                                            <div class="play-button">
-                                                <img src="/images/forward.svg" alt="">
-                                            </div>
-                                            
-                                            <div class="video-progress-bar">
-                                                <div class="cell1"></div>
-                                                <div class="cell2"></div>
-                                                <div class="cell3"></div>
-                                                <div class="cell4"></div>
-                                                <div class="cell5"></div>
-                                                <div class="cell6"></div>
-                                                <div class="cell7"></div>
-                                                <div class="cell8"></div>
-                                                <div class="cell9"></div>
-                                                <div class="cell10"></div>
-                                                <div class="cell11"></div>
-                                                <div class="cell12"></div>
-                                                <div class="cell13"></div>
-                                                <div class="cell14"></div>
-                                                <div class="cell15"></div>
-                                                <div class="cell16"></div>
-                                                <div class="cell17"></div>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                        <button id="btnStartRecording" class="start-video">
-                                            <div><img src="/images/camera.svg" alt="camera-icon"></div>
-                                            <div class="start-video">
-                                                Capturar
-                                            </div>
-                                        </button>
-                                        
-                                        <button id="btnStopRecording" class="start-video d-none">
-                                            <div><img src="/images/recording.svg" alt="camera-icon"></div>
-                                            <div class="start-video">
-                                                Listo
-                                            </div>
-                                        </button>
-                                        
-                                        <button id="btnRestartCapture" class="d-none">Repetir Captura</button>
-                                        
-                                        <button id="btnSendGif" class="start-video d-none">Subir Guifo</button>
-                                        
-                                        <button id="btnCancel" class="d-none">Cancelar</button>
-                                        
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div id="gifSent" class="createGifs d-none">
-                                    <div class="finished-guif">
-                                        <div class="title1">
-                                            Guifo Subido Con Éxito
-                                            <a href="#"><img src="/images/button3.svg" alt=""></a>
-                                        </div>
-                                        <div class="guifo-terminado row">
-                                            <div class="col">
-                                                <img class="guif-creado" src="https://media0.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif?cid=790b7611d6930cac4c17e5da5fc76ea10d221f14cac19d58&rid=giphy.gif" alt="">
-                                            </div>
-                                            <div class="col">
-                                                <p>Guifo creado con éxito</p>
-                                                <button id="copyGuif" class="btn-copy">Copiar enlace Guifo</button>
-                                                <a href="https://i.giphy.com/media/QsPVastwBgV2ByqBLK/giphy.gif?cid=01e2c6ddeebfde10c875cc47ab8553fe56212d959439ea63&rid=giphy.gif" target="_blank" download><button id="downloadGuif" class="btn-copy">Descargar Guifo</button></a>
-                                                
-                                                
-                                                <button id="btnDone"class="btn-ready">Listo</button>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+                <!-- div para reemplazar crear guifs -->
+               <div></div>
                 
                 <!-- MIS GIFOS //////////////////////////////////////////////////////////////////////////////////////////////// 8 -->
                 <div class="d-none">

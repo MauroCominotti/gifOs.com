@@ -11,84 +11,171 @@ var urlCopiedGif;
 
 window.onload = function () {
     
-    logo = document.querySelector('.img1');
-    logo.addEventListener('click', function () {
-        document.getElementById('textInput').value = ""; //limpio el input de texto
-        getSuggestions();
-        
-        for (let i = 0; i < matches.length; i++) {
-            if (i < 6) {
-                if (matches[i].classList.contains('d-none'))
-                toggleDisplay(matches[i]);
-            }
-            else {
-                if (!matches[i].classList.contains('d-none'))
-                toggleDisplay(matches[i]);
-            }
-        }
-        
-    });
-    
-    var search = document.getElementById('btnSearch');
-    search.addEventListener('click', function () {
-        if (document.getElementById('textInput').value !== "") {
-            getSearchResults();
-            if (!matches[2].classList.contains('d-none')) {
-                toggleDisplay(matches[2]);
-                toggleDisplay(matches[3]);
-                toggleDisplay(matches[4]);
-                toggleDisplay(matches[5]);
-                toggleDisplay(matches[6]);
-            }
-        }
-        else {
-            document.getElementById('textInput').placeholder = "Ingrese algo para buscar!!";
-        }
-    });
-    
     matches = document.querySelectorAll('div.principalCol > div');
-    document.getElementById('createGifs').addEventListener('click', function () {
-        document.getElementById('textInput').value = "";//limpio el input de texto
-        getSuggestions();
+    
+    //document.getElementById('arrowBack').addEventListener('click', function () { for (i = 0; i < matches.length; i++) { if (i !== 6) { toggleDisplay(matches[i]) } } });
+    
+    getMyGifs();
+    
+    matches2 = document.querySelectorAll('div#makingGifs > div');
+    document.getElementById('startGif').addEventListener('click', function () {
+        toggleDisplay(matches[1]);
+        for (i = 0; i < matches2.length; i++) { toggleDisplay(matches2[i]) }
+    });
+    
+    document.getElementById('arrowBack2').addEventListener('click', function () {
+        
+        toggleDisplay(matches[1]);
+
+        if (!matches2[2].classList.contains('d-none')) //si estamos en 'un chequeo antes de empezar'
+        {
+            toggleDisplay(matches2[0]);
+            toggleDisplay(matches2[1]);
+            toggleDisplay(matches2[2]);
+        }
+
+        if(!document.getElementById('gifSent').classList.contains('d-none')){
+            document.getElementById('generatingGif').classList.remove('d-none');
+            document.getElementById('gifSent').classList.add('d-none');
+            
+            document.getElementById('btnCancel').classList.add('d-none');
+            document.getElementById('btnStartRecording').classList.remove('d-none');
+            document.querySelector('video').classList.remove('d-none');
+            document.getElementById('sending-gif').classList.add('d-none');
+            
+        }
+
+        //for (i = 0; i < matches2.length; i++) { toggleDisplay(matches2[i]) }
+    });
+    
+    video = document.querySelector('video');
+    
+    document.getElementById('btnStartRecording').onclick = function () {
+        this.classList.add('d-none');
+        captureCamera(function (camera) {
+            video.muted = true;
+            video.volume = 0;
+            video.srcObject = camera;
+            
+            recorder = RecordRTC(camera, {
+                // type: 'video'
+                type: 'gif',
+                frameRate: 1,
+                quality: 10,
+                width: 360,
+                hidden: 240,
+                
+                onGifRecordingStarted: function () {
+                    console.log('started')
+                },
+            });
+            
+            
+            recorder.startRecording();
+            
+            // release camera on stopRecording
+            recorder.camera = camera;
+            
+            document.getElementById('btnStopRecording').classList.remove('d-none');
+            document.getElementById('timerBlock').classList.remove('d-none');
+            video.ontimeupdate = function () { document.getElementById('timerBlock').innerHTML = videoTime() };
+        });
+        
+    };
+    
+    function addZ(n) {
+        return (n < 10 ? '0' : '') + n;
+    }
+    
+    function videoTime() {
+        // https://elkardumen.blogspot.com/2016/01/convertir-milisegundos-formato.html
+        seg = video.currentTime;
+        if (seg > 60)
+        seg = seg % 60;
+        seg = seg.toFixed(2);
+        
+        var s = video.currentTime * 1000;
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+        
+        return (addZ(hrs) + ":" + addZ(mins) + ":" + addZ(seg));
+    }
+    
+    document.getElementById('btnStopRecording').onclick = function () {
+        this.classList.add('d-none');
+        document.getElementById('btnRestartCapture').classList.remove('d-none');
+        document.getElementById('btnSendGif').classList.remove('d-none');
+        document.getElementById('progressBar').classList.remove('d-none');
+        recorder.stopRecording(stopRecordingCallback);
+    };
+    
+    document.getElementById('btnRestartCapture').addEventListener('click', restartCapture, false);
+    document.getElementById('btnSendGif').addEventListener('click', sendGif, false);
+    
+    gifFinished = document.getElementById('finishedGif');
+    gifFinished.addEventListener('load', function () {
+        
+        // localStorage = window.localStorage;
+        // // localStorage.setItem("0", gifFinished.src);
+        
+        // var imgCanvas = document.createElement("canvas");
+        
+        
+        // // Make sure canvas is as big as the picture
+        // imgCanvas.width = gifFinished.width;
+        // imgCanvas.height = gifFinished.height;
+        
+        // var imgContext = imgCanvas.getContext("2d");
+        // // Draw image into canvas element
+        // imgContext.drawImage(gifFinished, 0, 0, imgCanvas.width, imgCanvas.height);
+        
+        // // Get canvas contents as a data URL
+        // var imgAsDataURL = imgCanvas.toDataURL("image/gif");
+        // // imgAsDataURL = 'data:image/gif;' + imgAsDataURL.substring(15);
+        // // imgAsDataURL = imgAsDataURL.substring(22);
+        
+        // // Save image into localStorage
+        // try {
+        //     // var randomnumber = Math.floor((Math.random()*100000000)+1)
+        //     // var randomnumberstringify = String(randomnumber) 
+        //     var randomnumberstringify ="mygif"+localStorage.length;
+        //     localStorage.setItem(randomnumberstringify, imgAsDataURL);
+        // }
+        // catch (e) {
+        //     console.log("Storage failed: " + e);
+        // }
+    });
+    
+    
+    document.getElementById('copyGuif').addEventListener('click', copyUrl, false);
+    document.getElementById('downloadGuif').addEventListener('click', downloadGuif, false);
+    
+    document.getElementById('btnDone').addEventListener('click', function () {
+        // toggleDisplay(matches[0]);
+        // toggleDisplay(matches[1]);
+        
+        // matches2[0].classList.remove('d-none');
+        // matches2[1].classList.remove('d-none');
+        // matches2[2].classList.add('d-none');
+        // document.getElementById('generatingGif').classList.remove('d-none');
+        // document.getElementById('gifSent').classList.add('d-none');
+        
+        // document.getElementById('btnCancel').classList.add('d-none');
+        // document.getElementById('btnStartRecording').classList.remove('d-none');
+        // document.querySelector('video').classList.remove('d-none');
+        // document.getElementById('sending-gif').classList.add('d-none');
+        
         const link = document.createElement('a');
-        link.href = 'create-gifos.html';
+        link.href = 'index.html';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-    });
-    
-    getMyGifs();
-    document.getElementById('myGifs').addEventListener('click', function () {
-        document.getElementById('textInput').value = "";//limpio el input de texto
-        getSuggestions();
-        if (!matches[6].classList.contains('d-none')) { //si estas en busquedas
-            toggleDisplay(matches[6]);
-            toggleDisplay(matches[8]);
-            toggleDisplay(matches[1]);
-        }
-        else {
-            for (i = 0; i < matches.length; i++) {
-                if (i !== 7 && i !== 0 && i !== 6) { toggleDisplay(matches[i]) }
-            };
-        }
         
-    });
-    
-    matches2 = document.querySelectorAll('div#makingGifs > div');
-    
-    
-    
-    document.getElementById('textInput').addEventListener('input', getSuggestions);
-    
-    var suggestions = document.querySelectorAll('div#suggestionBox div');
-    suggestions.forEach(element => {
-        element.addEventListener('click', function () { replaceSearch(element.textContent) })
-    });
-    
-    getRandomResults();
-    getTrendingResults();
-    
-    
+    }, false);
     
     
 };
@@ -120,41 +207,6 @@ function toggleDisplay2(x) {
     
 }
 
-
-// CAMBIAR ESTILOS ------------------------------------------------------------------------------
-function changeStylesheet1() {
-    document.getElementById('styleSheets').href = 'styles/style2.css';
-    logo[0].src = 'images/gifOF_logo.png';
-    logo[1].src = 'images/gifOF_logo.png';
-    logo[2].src = 'images/gifOF_logo.png';
-};
-
-function changeStylesheet2() {
-    document.getElementById('styleSheets').href = 'styles/style1.css';
-    logo[0].src = 'images/gifOF_logo_dark.png';
-    logo[1].src = 'images/gifOF_logo_dark.png';
-    logo[2].src = 'images/gifOF_logo_dark.png';
-};
-
-// MENU BUTTON ---------------------------------------------------------------------------------------
-// show the button content
-function showContent() {
-    document.getElementById("dropdownBtn").classList.toggle("show");
-};
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.btnTopics') && !event.target.matches('.btnIcon') && !event.target.matches('.downArrow') && document.getElementById("dropdownBtn").classList.contains("show")) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-};
 
 // ___________________________________________________________________ GIPHY ___________________________________________________________________
 //https://developers.giphy.com/docs/optional-settings/#rendition-guide
@@ -349,7 +401,7 @@ function sendGif() {
     document.getElementById('btnCancel').classList.remove('d-none');
     document.getElementById('sending-gif').classList.remove('d-none');
     
-    setTimeout(function () { document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[8]); }, 5000)
+    setTimeout(function(){ document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[1]);}, 5000)
     // var randomnumberstringify = "mygif" + localStorage.length;
     
     // try {
@@ -404,7 +456,7 @@ function restartCapture() {
 //______________________________________________ DOWNLOAD GIF _____________________________________________________
 //https://codepen.io/anon/pen/wadevN
 // https://eric.blog/2019/01/12/how-to-download-a-gif-from-giphy/
-function downloadGuif() {
+function downloadGuif(){
     // const link = document.createElement('a');
     // link.href = 'https://i.giphy.com/media/QsPVastwBgV2ByqBLK/giphy.gif?cid=01e2c6ddeebfde10c875cc47ab8553fe56212d959439ea63&rid=giphy.gif';
     // link.download = 'download.gif';
