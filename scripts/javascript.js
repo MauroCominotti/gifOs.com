@@ -6,7 +6,7 @@ var form;
 var localStorage;
 var gifFinished;
 var logo;
-var generatedGif;
+//var generatedGif;
 var urlCopiedGif;
 
 window.onload = function () {
@@ -165,6 +165,7 @@ function getSearchResults() {
     var text = document.getElementById('textInput');
     document.getElementById('suggestionBox').style = 'display:flex;';
     if (text != null && text.value !== "") {
+        //if(text.value.includes('')){text.value = text.value.replace(/\s/g, '%20')};
         var query = "&q=" + text.value;
         var url = "http://api.giphy.com/v1/gifs/search?" + query + apiKey + "&limit=10";
         fetchGifs(url).then(data => {
@@ -303,128 +304,3 @@ function showIDGifs(data, i) {
         document.getElementById('mygif' + i).src = "https://media0.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif?cid=790b7611d6930cac4c17e5da5fc76ea10d221f14cac19d58&rid=giphy.gif";
     }
 }
-//______________________________________________ VIDEO _____________________________________________________
-//https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-
-// Prefer camera resolution nearest to 1280x720.
-var constraints = { audio: true, video: { width: 1280, height: 720 } };
-
-function captureCamera(callback) {
-    navigator.mediaDevices.getUserMedia(constraints)
-    .then(function (camera) {
-        video.srcObject = camera;
-        video.onloadedmetadata = function (e) {
-            video.play();
-        };
-        callback(camera);
-        
-    })
-    .catch(function (err) { console.log(err.name + ": " + err.message); }) // always check for errors at the end.
-}
-
-function stopRecordingCallback() {
-    // video.src = video.srcObject = null; Esto me da error al poner el src del video en null, para solucionar pongo un "#" en el src
-    video.src = "#";
-    video.muted = false;
-    video.volume = 1;
-    video.classList.add('d-none');
-    
-    gifFinished.classList.remove('d-none');
-    gifFinished.src = URL.createObjectURL(recorder.getBlob());
-    
-    recorder.camera.stop();
-    recorder.destroy();
-    recorder = null;
-}
-
-function sendGif() {
-    document.getElementById('btnRestartCapture').classList.add('d-none');
-    gifFinished.classList.add('d-none');
-    
-    document.getElementById('btnStopRecording').classList.add('d-none');
-    document.getElementById('btnSendGif').classList.add('d-none');
-    document.getElementById('timerBlock').classList.add('d-none');
-    document.getElementById('progressBar').classList.add('d-none');
-    
-    document.getElementById('btnCancel').classList.remove('d-none');
-    document.getElementById('sending-gif').classList.remove('d-none');
-    
-    setTimeout(function () { document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[8]); }, 5000)
-    // var randomnumberstringify = "mygif" + localStorage.length;
-    
-    // try {
-    //     form = new FormData();
-    //     form.append('file', recorder.getBlob(), randomnumberstringify + '.gif');
-    //     console.log(form.get('file'));
-    
-    //ACA GUARDO EL GIF GENERADO
-    //generatedGif = form;
-    
-    //     fetch('https://upload.giphy.com/v1/gifs?' + apiKey, {
-    //         method: 'POST',
-    //         body: form
-    //     })
-    //         .then((response) => response.json()
-    //         )
-    //         .then((result) => {
-    //             console.log('Success:', result);
-    //             var data = { type: "gif", id: result.data.id }
-    //             localStorage.setItem(randomnumberstringify, JSON.stringify(data));
-    
-    // aca va lo de actualizar las vistas y cargar de vuelta mis guifos
-    //urlCopiedGif = result.data.source_image_url;
-    
-    
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
-    // }
-    // catch (e) {
-    //     console.log("Form upload failed: " + e);
-    // };
-}
-
-function restartCapture() {
-    this.classList.add('d-none');
-    video.classList.remove('d-none');
-    gifFinished.classList.add('d-none');
-    document.getElementById('btnStartRecording').classList.remove('d-none');
-    document.getElementById('btnStopRecording').classList.add('d-none');
-    document.getElementById('btnSendGif').classList.add('d-none');
-    document.getElementById('timerBlock').classList.add('d-none');
-    document.getElementById('progressBar').classList.add('d-none');
-}
-
-
-// CANCEL BUTTON
-// https://medium.com/@nmariasdev/cancelar-promesas-en-javascript-8e757156dd64
-
-
-//______________________________________________ DOWNLOAD GIF _____________________________________________________
-//https://codepen.io/anon/pen/wadevN
-// https://eric.blog/2019/01/12/how-to-download-a-gif-from-giphy/
-function downloadGuif() {
-    // const link = document.createElement('a');
-    // link.href = 'https://i.giphy.com/media/QsPVastwBgV2ByqBLK/giphy.gif?cid=01e2c6ddeebfde10c875cc47ab8553fe56212d959439ea63&rid=giphy.gif';
-    // link.download = 'download.gif';
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-}
-
-//______________________________________________ COPY URL TO GIF _____________________________________________________
-//https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
-
-function copyUrl() {
-    /* Select the text field */
-    urlCopiedGif.select();
-    urlCopiedGif.setSelectionRange(0, 99999); /*For mobile devices*/
-    
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-}
-
-//______________________________________________ PROGRESS BAR _____________________________________________________
-
-// https://www.w3schools.com/howto/howto_js_progressbar.asp

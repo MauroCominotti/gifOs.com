@@ -6,7 +6,7 @@ var form;
 var localStorage;
 var gifFinished;
 var logo;
-var generatedGif;
+//var generatedGif;
 var urlCopiedGif;
 
 window.onload = function () {
@@ -26,14 +26,14 @@ window.onload = function () {
     document.getElementById('arrowBack2').addEventListener('click', function () {
         
         toggleDisplay(matches[1]);
-
+        
         if (!matches2[2].classList.contains('d-none')) //si estamos en 'un chequeo antes de empezar'
         {
             toggleDisplay(matches2[0]);
             toggleDisplay(matches2[1]);
             toggleDisplay(matches2[2]);
         }
-
+        
         if(!document.getElementById('gifSent').classList.contains('d-none')){
             document.getElementById('generatingGif').classList.remove('d-none');
             document.getElementById('gifSent').classList.add('d-none');
@@ -44,7 +44,7 @@ window.onload = function () {
             document.getElementById('sending-gif').classList.add('d-none');
             
         }
-
+        
         //for (i = 0; i < matches2.length; i++) { toggleDisplay(matches2[i]) }
     });
     
@@ -117,58 +117,12 @@ window.onload = function () {
     document.getElementById('btnSendGif').addEventListener('click', sendGif, false);
     
     gifFinished = document.getElementById('finishedGif');
-    gifFinished.addEventListener('load', function () {
-        
-        // localStorage = window.localStorage;
-        // // localStorage.setItem("0", gifFinished.src);
-        
-        // var imgCanvas = document.createElement("canvas");
-        
-        
-        // // Make sure canvas is as big as the picture
-        // imgCanvas.width = gifFinished.width;
-        // imgCanvas.height = gifFinished.height;
-        
-        // var imgContext = imgCanvas.getContext("2d");
-        // // Draw image into canvas element
-        // imgContext.drawImage(gifFinished, 0, 0, imgCanvas.width, imgCanvas.height);
-        
-        // // Get canvas contents as a data URL
-        // var imgAsDataURL = imgCanvas.toDataURL("image/gif");
-        // // imgAsDataURL = 'data:image/gif;' + imgAsDataURL.substring(15);
-        // // imgAsDataURL = imgAsDataURL.substring(22);
-        
-        // // Save image into localStorage
-        // try {
-        //     // var randomnumber = Math.floor((Math.random()*100000000)+1)
-        //     // var randomnumberstringify = String(randomnumber) 
-        //     var randomnumberstringify ="mygif"+localStorage.length;
-        //     localStorage.setItem(randomnumberstringify, imgAsDataURL);
-        // }
-        // catch (e) {
-        //     console.log("Storage failed: " + e);
-        // }
-    });
-    
-    
+
     document.getElementById('copyGuif').addEventListener('click', copyUrl, false);
     document.getElementById('downloadGuif').addEventListener('click', downloadGuif, false);
     
     document.getElementById('btnDone').addEventListener('click', function () {
-        // toggleDisplay(matches[0]);
-        // toggleDisplay(matches[1]);
-        
-        // matches2[0].classList.remove('d-none');
-        // matches2[1].classList.remove('d-none');
-        // matches2[2].classList.add('d-none');
-        // document.getElementById('generatingGif').classList.remove('d-none');
-        // document.getElementById('gifSent').classList.add('d-none');
-        
-        // document.getElementById('btnCancel').classList.add('d-none');
-        // document.getElementById('btnStartRecording').classList.remove('d-none');
-        // document.querySelector('video').classList.remove('d-none');
-        // document.getElementById('sending-gif').classList.add('d-none');
-        
+       
         const link = document.createElement('a');
         link.href = 'index.html';
         document.body.appendChild(link);
@@ -212,61 +166,6 @@ function toggleDisplay2(x) {
 //https://developers.giphy.com/docs/optional-settings/#rendition-guide
 var apiKey = "&api_key=qZxHL1NNfanD7sSs4fFgauIXTeE8n2z3";
 var apiKey2 = "&api_key=LIVDSRZULELA"
-// Get search, random and trending gifs ---------------------------------------
-function getSearchResults() {
-    var text = document.getElementById('textInput');
-    document.getElementById('suggestionBox').style = 'display:flex;';
-    if (text != null && text.value !== "") {
-        var query = "&q=" + text.value;
-        var url = "http://api.giphy.com/v1/gifs/search?" + query + apiKey + "&limit=10";
-        fetchGifs(url).then(data => {
-            showSearchGifs(data)
-        });
-    }
-};
-
-var count = 0;
-function getSuggestions() {
-    var text = document.getElementById('textInput');
-    if (!matches[6].classList.contains('d-none')) { document.getElementById('suggestionBox').style = 'display:flex;'; }
-    else { document.getElementById('suggestionBox').style = 'display:block;'; }
-    
-    if (text != null && text.value !== "") {
-        if (count === 0) { toggleDisplay2(document.getElementById('suggestionBox')); count = 1; }
-        var query = "&tag=" + text.value;
-        var url = "https://api.tenor.com/v1/search_suggestions?" + apiKey2 + query + "&limit=4"; //LA URL ES DE TENOR! CAMBIAR A GIPHY!!!
-        for (let i = 0; i < 4; i++) {
-            fetchGifs(url).then(data => {
-                showSuggestions(data, i)
-            });
-        }
-    }
-    else {
-        if (!document.getElementById('suggestionBox').classList.contains('d-none')) {
-            toggleDisplay2(document.getElementById('suggestionBox'));
-            count = 0;
-        }
-        
-    }
-}
-function getRandomResults() {
-    var url = "http://api.giphy.com/v1/gifs/random?" + apiKey;
-    for (let i = 0; i < 4; i++) {
-        fetchGifs(url).then(data => {
-            showRandomGifs(data, i)
-        });
-    }
-};
-function getTrendingResults() {
-    var url = "http://api.giphy.com/v1/gifs/trending?" + apiKey + "&limit=10";
-    fetchGifs(url).then(data => {
-        showTrendingGifs(data)
-    });
-};
-
-function replaceSearch(text) {
-    document.getElementById('textInput').value = text;
-}
 
 function getMyGifs() {
     
@@ -288,6 +187,21 @@ function getMyGifs() {
         }
     }
 }
+
+function getGeneratedGuif (){
+    var storage = localStorage.getItem('mygif' + (localStorage.length-1).toString() );
+    
+    storage = JSON.parse(storage);
+    var gifID = "&ids=" + storage.id;
+    var url = "http://api.giphy.com/v1/gifs?" + apiKey + gifID;
+    fetchGifs(url).then(data => {
+        document.getElementById('guif-creado').src = data.data[0].images.original.url
+    })
+    .catch(() => {
+        document.getElementById('guif-creado').src = "https://media0.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif?cid=790b7611d6930cac4c17e5da5fc76ea10d221f14cac19d58&rid=giphy.gif";
+    });
+    
+}
 // Fetch the gifs ---------------------------------------
 function fetchGifs(url) {
     const found = fetch(url)
@@ -305,48 +219,7 @@ function fetchGifs(url) {
 }
 
 // Show search, random and trending gifs ---------------------------------------
-//FALTA HACER QUE LOS ESPACIOS EN BLANCO SE PUEDAN MANDAR COMO %20 EN LA URL
-function showSearchGifs(data) {
-    let box;
-    document.getElementById('showSearchTitle').textContent = document.getElementById('textInput').value + " (resultados)";
-    for (i = 0; i < 10; i++) {
-        box = document.getElementById('show_gif' + i);
-        box.src = data.data[i].images.original.webp;
-        console.log(data)
-    }
-};
-function showSuggestions(data) {
-    if (data.results.length !== 0) {
-        for (i = 0; i < 4; i++) {
-            suggestion = document.getElementById('suggestion' + i);
-            suggestion.textContent = data.results[i];
-        }
-    }
-    else {
-        for (i = 0; i < 4; i++) {
-            suggestion = document.getElementById('suggestion' + i);
-            suggestion.textContent = "No hay resultados";
-        }
-    }
-    
-}
-function showRandomGifs(data, i) {
-    let box;
-    title = document.getElementById('gifTitle' + i);
-    title.textContent = "#" + data.data.title;
-    box = document.getElementById('gif' + i);
-    box.src = data.data.images.original.webp;
-};
-function showTrendingGifs(data) {
-    let box;
-    for (i = 0; i < 10; i++) {
-        box = document.getElementById('gif' + (i + 4));
-        if (data.data[i].images.original.webp !== "")
-        box.src = data.data[i].images.original.webp;
-        else
-        box.src = data.data[i].images.original.url;
-    }
-};
+
 function showIDGifs(data, i) {
     if (data !== null) {
         document.getElementById('mygif' + i).src = data.data[0].images.original.url;
@@ -385,8 +258,7 @@ function stopRecordingCallback() {
     gifFinished.src = URL.createObjectURL(recorder.getBlob());
     
     recorder.camera.stop();
-    recorder.destroy();
-    recorder = null;
+    
 }
 
 function sendGif() {
@@ -401,40 +273,44 @@ function sendGif() {
     document.getElementById('btnCancel').classList.remove('d-none');
     document.getElementById('sending-gif').classList.remove('d-none');
     
-    setTimeout(function(){ document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[1]);}, 5000)
-    // var randomnumberstringify = "mygif" + localStorage.length;
-    
-    // try {
-    //     form = new FormData();
-    //     form.append('file', recorder.getBlob(), randomnumberstringify + '.gif');
-    //     console.log(form.get('file'));
-    
-    //ACA GUARDO EL GIF GENERADO
-    //generatedGif = form;
-    
-    //     fetch('https://upload.giphy.com/v1/gifs?' + apiKey, {
-    //         method: 'POST',
-    //         body: form
-    //     })
-    //         .then((response) => response.json()
-    //         )
-    //         .then((result) => {
-    //             console.log('Success:', result);
-    //             var data = { type: "gif", id: result.data.id }
-    //             localStorage.setItem(randomnumberstringify, JSON.stringify(data));
-    
-    // aca va lo de actualizar las vistas y cargar de vuelta mis guifos
-    //urlCopiedGif = result.data.source_image_url;
     
     
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
-    // }
-    // catch (e) {
-    //     console.log("Form upload failed: " + e);
-    // };
+    var randomnumberstringify = "mygif" + localStorage.length;
+    try {
+        form = new FormData();
+        form.append('file', recorder.getBlob(), randomnumberstringify + '.gif');
+        console.log(form.get('file'));
+        
+        recorder.destroy();
+        recorder = null;
+        //ACA GUARDO EL GIF GENERADO
+        //generatedGif = form;
+        
+        fetch('https://upload.giphy.com/v1/gifs?' + apiKey, {
+        method: 'POST',
+        body: form
+    })
+    .then((response) => response.json()
+    )
+    .then((result) => {
+        console.log('Success:', result);
+        var data = { type: "gif", id: result.data.id }
+        localStorage.setItem(randomnumberstringify, JSON.stringify(data));
+        
+        //aca va lo de actualizar las vistas y cargar de vuelta mis guifos
+        document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[1]);
+        
+        // urlCopiedGif = result.data.source_image_url;
+        getMyGifs();
+        getGeneratedGuif();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+catch (e) {
+    console.log("Form upload failed: " + e);
+};
 }
 
 function restartCapture() {
@@ -469,12 +345,24 @@ function downloadGuif(){
 //https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
 
 function copyUrl() {
-    /* Select the text field */
-    urlCopiedGif.select();
-    urlCopiedGif.setSelectionRange(0, 99999); /*For mobile devices*/
     
-    /* Copy the text inside the text field */
+    // Crea un campo de texto "oculto"
+    var aux = document.createElement("input");
+    
+    // Asigna el contenido del elemento especificado al valor del campo
+    aux.setAttribute("value", document.getElementById('guif-creado').src);
+    
+    // Añade el campo a la página
+    document.body.appendChild(aux);
+    
+    // Selecciona el contenido del campo
+    aux.select();
+    
+    // Copia el texto seleccionado
     document.execCommand("copy");
+    
+    // Elimina el campo de la página
+    document.body.removeChild(aux);
 }
 
 //______________________________________________ PROGRESS BAR _____________________________________________________
