@@ -174,7 +174,7 @@ function getMyGifs() {
         if (storage !== null) {
             storage = JSON.parse(storage);
             var gifID = "&ids=" + storage.id;
-            var url = "http://api.giphy.com/v1/gifs?" + apiKey + gifID;
+            var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
             fetchGifs(url).then(data => {
                 showIDGifs(data, i)
             })
@@ -193,7 +193,7 @@ function getGeneratedGuif (){
     
     storage = JSON.parse(storage);
     var gifID = "&ids=" + storage.id;
-    var url = "http://api.giphy.com/v1/gifs?" + apiKey + gifID;
+    var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
     fetchGifs(url).then(data => {
         document.getElementById('guif-creado').src = data.data[0].images.original.url
     })

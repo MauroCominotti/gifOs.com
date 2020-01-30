@@ -167,7 +167,7 @@ function getSearchResults() {
     if (text != null && text.value !== "") {
         //if(text.value.includes('')){text.value = text.value.replace(/\s/g, '%20')};
         var query = "&q=" + text.value;
-        var url = "http://api.giphy.com/v1/gifs/search?" + query + apiKey + "&limit=10";
+        var url = "https://api.giphy.com/v1/gifs/search?" + query + apiKey + "&limit=10";
         fetchGifs(url).then(data => {
             showSearchGifs(data)
         });
@@ -199,7 +199,7 @@ function getSuggestions() {
     }
 }
 function getRandomResults() {
-    var url = "http://api.giphy.com/v1/gifs/random?" + apiKey;
+    var url = "https://api.giphy.com/v1/gifs/random?" + apiKey;
     for (let i = 0; i < 4; i++) {
         fetchGifs(url).then(data => {
             showRandomGifs(data, i)
@@ -207,7 +207,7 @@ function getRandomResults() {
     }
 };
 function getTrendingResults() {
-    var url = "http://api.giphy.com/v1/gifs/trending?" + apiKey + "&limit=10";
+    var url = "https://api.giphy.com/v1/gifs/trending?" + apiKey + "&limit=10";
     fetchGifs(url).then(data => {
         showTrendingGifs(data)
     });
@@ -224,7 +224,7 @@ function getMyGifs() {
         if (storage !== null) {
             storage = JSON.parse(storage);
             var gifID = "&ids=" + storage.id;
-            var url = "http://api.giphy.com/v1/gifs?" + apiKey + gifID;
+            var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
             fetchGifs(url).then(data => {
                 showIDGifs(data, i)
             })
