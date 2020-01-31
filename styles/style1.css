@@ -1,164 +1,33 @@
-*{
-    font-family: 'Chakra Petch', sans-serif;
-    box-sizing: border-box;
-}
 body{
     background-color: #110038 ;
-    line-height: 1.5;
-    margin: 0;
-}
-button, input {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-button {
-    border-radius: 0;
-}
-button:not(:disabled) {
-    cursor: pointer;
-}
-.container-fluid {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-.principalRow{
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0;
-    justify-content: center;
-}
-.row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin:0;
-}
-.col,
-.col-2,
-.col-10,
-.col-12{
-    position: relative;
-	width: 100%;
-	padding-right: 15px;
-	padding-left: 15px
-}
-.col {
-	-ms-flex-preferred-size: 0;
-	flex-basis: 0;
-	-ms-flex-positive: 1;
-	flex-grow: 1;
-	max-width: 100%
-}
-.col-2 {
-	-ms-flex: 0 0 16.666667%;
-	flex: 0 0 16.666667%;
-	max-width: 16.666667%
-}
-.col-10 {
-	-ms-flex: 0 0 83.333333%;
-	flex: 0 0 83.333333%;
-	max-width: 83.333333%
-}
-.col-12 {
-	-ms-flex: 0 0 100%;
-	flex: 0 0 100%;
-	max-width: 100%
-}
-.p-0{
-    padding: 0;
-}
-.d-flex{
-    display: flex;
-}
-.justify-content-start{
-    justify-content: flex-start;
-}
-.justify-content-end{
-    justify-content: flex-end;
-}
-.align-items-center{
-    align-items: center;
-}
-.principalCol{
-    flex: 0 0 1200px;
-    display: flex;
-    flex-direction: column;
-}
-.space-between{
-    justify-content: space-between;
 }
 .upbar{
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
     box-shadow: 0 1px 0 0 #110038;
 }
 .upbar div{
-    font-size: 12px;
     color: #FFFFFF;
-    letter-spacing: 0;
 }
 .btnTopics{
     background: #EE3EFE;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-    padding: 0.5rem 2.5rem .5rem 1rem;
-    margin-right: 0.5rem;
-    font-size: 16px;
     color: #FFFFFF;
-    letter-spacing: 0;
-    text-align: center;
-    line-height: 18px;
-}
-.btnTopics:hover{
-    cursor: pointer;
 }
 .btnTopics ~ a{
     color:white;
 }
 .btnTopics ~ a:hover{
-    text-decoration: none;
     border: 1px dotted #FFFFFF;
 }
-.btnTopics ~ a:active{
-    opacity: 0.5;
-}
-.downArrow{
-    transform: rotate(-270deg);
-    position: absolute;
-    left: 40%;
-    top: 40%;
-}
 .btnIcon{
-    width: 25%;
-    height: 100%;
     background: #EE3EFE;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    margin-right: .5rem;
-}
-.dropDown{
-    position: relative;
-    display: inline-block;
 }
 .dropdown-content {
-    display: none;
-    position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.show{
-    display:block!important;
 }
 #dropdownBtn{
     background: #B4B4B4;
@@ -168,18 +37,11 @@ button:not(:disabled) {
     background: #CCCCCC;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    margin:.5rem;
-    padding: .2rem 0px .2rem 0.5rem;
 }
 #changeLinks1:hover, #changeLinks2:hover{
     background: #2E32FB;
     border: 1px solid rgba(51,53,143,0.20);
     box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
-    cursor: pointer;
-    transition:.9s;
-}
-.pr{
-    padding-right: 1rem;
 }
 .section1{
     background: #B4B4B4;
@@ -187,305 +49,92 @@ button:not(:disabled) {
 }
 .title1{
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-    margin:2px;
-    font-size: 14px;
     color: #FFFFFF;
-    letter-spacing: 0;
-    font-weight: 700;
-    padding-left: 0.2rem;
 }
 input{
-    width:88%;
-    margin:10px;
     background: #FFFFFF;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
-    padding: 0.5rem 0px 0.5rem 1rem;
 }
 input::placeholder{
     color: #B4B4B4;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 22px;
-}
-.pad1{
-    padding: 1.5rem 0px;
 }
 .searchbutton{
-    width:8%;
     background: #B4B4B4;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
 }
 .searchbutton span{
     color:grey;
-    font-size: 14px;
 }
 .searchbutton img{
     color: grey;
-    height: 10px;
 }
-
-
-
 .section2{
     background: #FFFAFE;
-    margin: 3rem 0px 1rem 0px;
     border: 1px solid #2E32FB;
     box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #110038;
 }
 .section2 div{
-    padding: .2rem 0.5rem;
-    font-size: 14px;
     color: #110038;
-    letter-spacing: 0;
 }
-
-
 .box {
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
-    flex-wrap: wrap;
-    flex: 0 0 288px;
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
-}
-.boxTransparent{
-    display: flex;
-    justify-content: center;
-    align-items: self-start;
-    flex-wrap: wrap;
-    background: transparent;
-    width: 288px;
-    height: 298px;
-    background-color: transparent;
-    margin-bottom: 16px;
-}
-.hover-effect{
-    width: 294px;
-    height: 304px;
-    display: flex;
-    justify-content: center;
-    padding: .25rem;
-    background: transparent;
-    margin-bottom: 16px;
-}
-.hover-effect .boxTransparent{
-    position: relative;
 }
 .hover-effect:hover{
     background: #E6E6E6;
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
-.hover-effect:hover .tags{
-    display: block;
-}
 .boxTransparent:hover{
     border: 1px dotted #110038;
 }
-.largeBox{
-    width:592px;
-}
-.largeBoxTendencies{
-    width: 595px;
-}
 .tags{
-    display: none;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-    width: 100%;
 }
 .title2{
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
-    margin: .25rem .25rem 0rem .25rem;
-    width: 100%;
-    height: 24px;
 }
 .title2 div{
     color: #FFFFFF;
-    letter-spacing: 0;
-    font-size: 14px;
-    font-weight: 700;
-}
-.title2 img{
-    float: right;
-    margin: 0.3rem;
-}
-.suggestionBox{
-    margin: 2px;
 }
 .suggestionBox div{
-    margin: 5px 10px;
-    padding:5px;
     background: #F0F0F0;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
-    cursor:pointer;
 }
 .suggestionBox div:hover{
     border: 1px solid #110038;
 }
 /* GIFS ----------------------------------------------------------------------------------------------------------*/
-.gifBox{
-    width: 280px;
-    height: 280px;
-    margin: 1px .25rem .25rem .25rem;
-    position: relative;
-}
 .gifBoxBtn{
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
     background: #2E32FB;
     border: 1px solid #4C2F99;
     box-shadow: inset -2px -2px 0 0 #2124B3, inset 2px 2px 0 0 #FFFFFF;
-    text-align: center;
 }
 .gifBoxBtn a{
     color: #FFFFFF;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 18px;
-    text-decoration: none;
-    padding: 0.5rem;
-    display: block;
-}
-.gifBoxLg{
-    width: calc(100% - 8px);
-    height:280px;
-    margin-bottom:.25rem;
-    margin-top:.25rem;
-}
-.gif {
-    height: 280px;
-    width: 100%;
-}
-.trendingGif {
-    height: 100%;
-    width: 100%;
 }
 /* CREAR GIFS ////////////////////////////////////////////////////////////////*/
-.createGifs{
-    position: relative;
-    background-color: transparent;
-    height: 450px; 
-    width:100%;
-}
 .createBox{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    height:386px;
-    width: 684px;
-    transform: translate(-50% , -50%);
     background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;;
-}
-.ml-24{
-    margin-left:-24px;
-}
-.instructions{
-    margin: 30px 0 0 73px;
-}
-.instructions .titleInstructions{
-    font-weight: bold;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 .steps{
-    margin:17px 0 0 0;
-    width:518px;
-    height: 190px;
-    font-size: 14px;
     color: #110038;
-    letter-spacing: 0;
-    line-height: 20px;
-}
-.steps span{
-    font-weight: bold;
-}
-.steps div {
-    margin: 10px 0;
-}
-.d-none{
-    display:none !important;
-}
-#arrowBack, #arrowBack2{
-    cursor:pointer!important;
 }
 .cancel-button{
-    width: 144px;
     background: #FFF4FD;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    margin-left: auto!important;
     color: #110038;
 }
-#cancelGif{
-    margin-left: 45%!important;
-}
-#startGif{
-    width: 144px;
-}
-#arrowBack, #arrowBack2{
-    cursor:pointer;
-}
 .videoBox{
-    position: absolute;
-    top:45%;
-    left: 50%;
-    height:548px;
-    width: 860px;
-    transform: translate(-50% , -50%);
     background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;;
-}
-.videoFrame{
-    width: 832px;
-    height: 434px;
-    margin: 11px;
-}
-#finishedGif{
-    width: 100%;
-    height: 100%;
-}
-.img1{
-    cursor: pointer;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 button:disabled {
     background: #dddddd;
-}
-.video-buttons{
-    display: flex;
-    margin: 0px 16px 0px 10px;
-    height: 36px;
-}
-.start-video{
-    width: 180px;
-    height: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    border: 0;
-    padding:0;
-    margin-left: auto;
-}
-.start-video div{
-    width: 36px;
-    align-self: stretch;
-}
-.start-video div + div{
-    width: 144px;
-}
-.start-video div,
-.start-video div + div{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-#btnStartRecording,
-#btnStopRecording{
-    cursor: pointer;
 }
 #btnStartRecording div,
 #btnStartRecording div + div, 
@@ -500,48 +149,22 @@ button:disabled {
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
 }
-#btnSendGif, 
-#btnRestartCapture, 
-#btnCancel{
-    width: 144px;
-    height: 36px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-left: 1rem;
-}
 #btnRestartCapture,
 #btnCancel{
     background: #FFF4FD;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    margin-left: auto;
 }
 .timer{
     background: #FFFFFF;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
-    width: 124px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .video-progress-bar{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 240px;
-    align-self: center;
-    padding: 2.4px 2px 0px 1.7px;
-    height: 24px;
     background: #B4B4B4;
     box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
 }
 .video-progress-bar div {
-    width:12px;
-    height:20px;
     background: #999999;
 }
 .cell1,
@@ -550,158 +173,34 @@ button:disabled {
 .cell4{
     background: #F7C9F3!important;
 }
-.progress-bar-container{
-    display: flex;
-    align-items: center;
-    align-self: center;
-    flex-wrap: wrap;
-    width: 265px;
-    height: 24px;
-    margin-left: 3rem;
-}
 .play-button{
-    margin-right: 5px;
     background: #F7C9F3;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-self: flex-start;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }
 .sending-gif{
     background: #FFFFFF;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.w-240{
-    width: 240px;
 }
 .sending-gif p{
-    font-size: 16px;
     color: #110038;
-    letter-spacing: 0;
-    text-align: center;
-    line-height: 22px;
-    font-weight: 700;
 }
 .sending-gif p ~ p{
-    font-size: 12px;
     color: rgba(17,0,56,0.64);
-    letter-spacing: 0;
-    text-align: center;
-    line-height: 14px;
-    font-weight: 400;
 }
-.sending-gif p ~ p span {
-    text-decoration: line-through;
-}
-
 /* GUIFO TERMINADO ////////////////////////////////////////////////////////////////*/
 .finished-guif{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    height:391px;
-    width: 721px;
-    transform: translate(-50% , -50%);
     background: #B4B4B4;
-    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;;
-}
-.finished-guif a{
-    float: right;
-}
-.guif-creado{
-    width:365px;
-    height: 191px;
-}
-.guifo-terminado{
-    padding: 3rem 1rem;
-}
-.guifo-terminado p{
-    margin-left: 8px;
-    font-weight: 700;
+    box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
 }
 .btn-copy{
     background: #FFF4FD;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    width:256px;
-    height:36px;
-    margin: 0.5rem 0px;
-    float: right;
 }
 .btn-ready{
     background: #F7C9F3;
     border: 1px solid #110038;
     box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-    width: 144px;
-    height: 36px;
-    float: right;
-    margin-top: 5.5rem;
-}
-/* ANIMATIONS ////////////////////////////////////////////////////////////////*/
-.fadeOut{
-    animation:fadeOut 1s ease-in-out;
-}
-.fadeInDown{
-    animation:fadeInDown 1s ease-in-out;
-}
-@keyframes fadeOut{
-    0%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-@keyframes fadeInDown{
-    0%{
-        opacity: 0;
-        margin-top: 1000px;
-    }
-    100%{
-        opacity: 1;
-        margin-top:0px;
-    }
-}
-.delay-1{
-    animation-delay: 1s;
-}
-.fadeInSuggestions{
-    animation:fadeInSuggestions 1s ease-in-out;
-}
-.fadeOutSuggestions{
-    animation:fadeOutSuggestions 1s ease-in-out;
-}
-@keyframes fadeInSuggestions{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-@keyframes fadeOutSuggestions{
-    0%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}
-/* MEDIA QUERIES  ////////////////////////////////////////////////////////////////*/
-@media only screen and (min-width: 1400px){
-    .principalRow{
-        margin:0 0 0 100px;
-        justify-content: normal;
-    }
 }

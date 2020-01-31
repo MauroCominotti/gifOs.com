@@ -18,8 +18,6 @@ window.onload = function () {
     
     matches = document.querySelectorAll('div.principalCol > div');
     
-    //document.getElementById('arrowBack').addEventListener('click', function () { for (i = 0; i < matches.length; i++) { if (i !== 6) { toggleDisplay(matches[i]) } } });
-    
     logo[0].addEventListener('click',openIndex, false);
     logo[1].addEventListener('click',openIndex, false);
     document.getElementById('cancelGif').addEventListener('click',openIndex, false);
@@ -54,8 +52,6 @@ window.onload = function () {
             document.getElementById('sending-gif').classList.add('d-none');
             
         }
-        
-        //for (i = 0; i < matches2.length; i++) { toggleDisplay(matches2[i]) }
     });
     
     video = document.querySelector('video');
@@ -68,7 +64,6 @@ window.onload = function () {
             video.srcObject = camera;
             
             recorder = RecordRTC(camera, {
-                // type: 'video'
                 type: 'gif',
                 frameRate: 1,
                 quality: 10,
@@ -129,7 +124,6 @@ window.onload = function () {
     gifFinished = document.getElementById('finishedGif');
     
     document.getElementById('copyGuif').addEventListener('click', copyUrl, false);
-    document.getElementById('downloadGuif').addEventListener('click', downloadGuif, false);
     
     document.getElementById('btnDone').addEventListener('click', function () {
         
@@ -367,8 +361,6 @@ function sendGif() {
         
         recorder.destroy();
         recorder = null;
-        //ACA GUARDO EL GIF GENERADO
-        //generatedGif = form;
         
         fetch('https://upload.giphy.com/v1/gifs?' + apiKey, {
         method: 'POST',
@@ -382,9 +374,10 @@ function sendGif() {
         localStorage.setItem(randomnumberstringify, JSON.stringify(data));
         
         //aca va lo de actualizar las vistas y cargar de vuelta mis guifos
-        document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[1]);
+        document.getElementById('gifSent').classList.remove('d-none'); 
+        document.getElementById('generatingGif').classList.add('d-none'); 
+        toggleDisplay(matches[1]);
         
-        // urlCopiedGif = result.data.source_image_url;
         getMyLastGif(localStorage.length);
         getGeneratedGuif();
     })
@@ -406,23 +399,6 @@ function restartCapture() {
     document.getElementById('btnSendGif').classList.add('d-none');
     document.getElementById('timerBlock').classList.add('d-none');
     document.getElementById('progressBar').classList.add('d-none');
-}
-
-
-// CANCEL BUTTON
-// https://medium.com/@nmariasdev/cancelar-promesas-en-javascript-8e757156dd64
-
-
-//______________________________________________ DOWNLOAD GIF _____________________________________________________
-//https://codepen.io/anon/pen/wadevN
-// https://eric.blog/2019/01/12/how-to-download-a-gif-from-giphy/
-function downloadGuif(){
-    // const link = document.createElement('a');
-    // link.href = 'https://i.giphy.com/media/QsPVastwBgV2ByqBLK/giphy.gif?cid=01e2c6ddeebfde10c875cc47ab8553fe56212d959439ea63&rid=giphy.gif';
-    // link.download = 'download.gif';
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
 }
 
 //______________________________________________ COPY URL TO GIF _____________________________________________________
@@ -448,7 +424,3 @@ function copyUrl() {
     // Elimina el campo de la página
     document.body.removeChild(aux);
 }
-
-//______________________________________________ PROGRESS BAR _____________________________________________________
-
-// https://www.w3schools.com/howto/howto_js_progressbar.asp

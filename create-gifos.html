@@ -1,133 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>gifOS.com</title>
-    
-    <!-- BOOTSTRAP -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-        <!-- FIRST AND SECOND STYLESHEET -->
-        <link id="styleSheets" rel="stylesheet" href="styles/style1.css">
-        <!-- GOOGLE FONTS -->
-        <link
-        href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
-        rel="stylesheet">
-        
-        
-        
-    </head>
-    
-    <body>
-        <div class="row-fluid">
-            <div class="col upbar">
-                <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
-            </div>
+    <!-- FIRST AND SECOND STYLESHEET -->
+    <link rel="stylesheet" href="styles/principalStylesheet.css">
+    <link id="styleSheets" rel="stylesheet" href="styles/style1.css">
+    <!-- GOOGLE FONTS -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+    <div class="row-fluid">
+        <div class="col upbar">
+            <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
         </div>
-        
-        <div class="container-fluid">
-            <div class="principalRow">
-                <div class="principalCol">
+    </div>
+    
+    <div class="container-fluid">
+        <div class="principalRow">
+            <div class="principalCol">
+                
+                
+                <!-- CREAR GIFS! /////////////////////////////////////////////////////////////////// '7'-->
+                <div id="makingGifs"> <!-- Empieza el matches2 -->
+                    <div class="row pad1">
+                        <div class="col-2 p-0 ml-24">
+                            <img src="images/arrow.svg" alt="" id="arrowBack">
+                            <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
+                        </div>
+                    </div>
                     
-                    
-                    <!-- CREAR GIFS! /////////////////////////////////////////////////////////////////// '7'-->
-                    <div id="makingGifs"> <!-- Empieza el matches2 -->
+                    <div class="row">
+                        <div class="createGifs">
+                            <div class="createBox">
+                                <div class="title1">
+                                    Crear gifos
+                                </div>
+                                <div class="instructions">
+                                    <div class="titleInstructions">Aquí podrás crear tus propios guifos</div>
+                                    <div class="steps">
+                                        Crear tu <span>guifo</span> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los
+                                        pasos para crear tu guifo son: <br>
+                                        
+                                        <div> <span>1)</span> Dar permisos de acceso a la cámara (sólo por el tiempo de uso)<br></div>
+                                        <div><span>2)</span> Capturar tu momento guifo<br></div>
+                                        <div> <span>3)</span> Revisar el momento<br></div>
+                                        <div><span>4)</span> Listo para subir y compartir!<br></div>
+                                        <div>¿Quieres comenzar a crear tu guifo ahora?</div>
+                                    </div>
+                                    
+                                    <button id="cancelGif" class="btnTopics pr cancel-button">Cancelar</button>
+                                    <button id="startGif" class="btnTopics pr">Comenzar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- GENERAR GIFS ////////////////////////////////////////////////////////////////////////////////////-->
+                    <div class="d-none">
                         <div class="row pad1">
                             <div class="col-2 p-0 ml-24">
-                                <img src="images/arrow.svg" alt="" id="arrowBack">
+                                <img src="images/arrow.svg" alt="" id="arrowBack2"> <!-- Deberia de ponerla en ::before -->
                                 <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
                             </div>
                         </div>
-                        
                         <div class="row">
                             <div class="createGifs">
-                                <div class="createBox">
+                                <div id="generatingGif" class="videoBox">
                                     <div class="title1">
-                                        Crear gifos
+                                        Un chequeo antes de empezar
                                     </div>
-                                    <div class="instructions">
-                                        <div class="titleInstructions">Aquí podrás crear tus propios guifos</div>
-                                        <div class="steps">
-                                            Crear tu <span>guifo</span> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los
-                                            pasos para crear tu guifo son: <br>
+                                    <div class="videoFrame">
+                                        <video autoplay width="832" height="434" controls></video>
+                                        <img id="finishedGif" class="d-none" src="#" alt="">
+                                        <div id="sending-gif" class="sending-gif d-none">
+                                            <img src="./images/globe_img.png" alt="icono de globo terraqueo">
+                                            <p>Estamos subiendo tu guifo...</p>
                                             
-                                            <div> <span>1)</span> Dar permisos de acceso a la cámara (sólo por el tiempo de uso)<br></div>
-                                            <div><span>2)</span> Capturar tu momento guifo<br></div>
-                                            <div> <span>3)</span> Revisar el momento<br></div>
-                                            <div><span>4)</span> Listo para subir y compartir!<br></div>
-                                            <div>¿Quieres comenzar a crear tu guifo ahora?</div>
-                                        </div>
-                                        
-                                        <button id="cancelGif" class="btnTopics pr cancel-button">Cancelar</button>
-                                        <button id="startGif" class="btnTopics pr">Comenzar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- GENERAR GIFS ////////////////////////////////////////////////////////////////////////////////////-->
-                        <div class="d-none">
-                            <div class="row pad1">
-                                <div class="col-2 p-0 ml-24">
-                                    <img src="images/arrow.svg" alt="" id="arrowBack2"> <!-- Deberia de ponerla en ::before -->
-                                    <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="createGifs">
-                                    <div id="generatingGif" class="videoBox">
-                                        <div class="title1">
-                                            Un chequeo antes de empezar
-                                        </div>
-                                        <div class="videoFrame">
-                                            <video autoplay width="832" height="434" controls></video>
-                                            <img id="finishedGif" class="d-none" src="#" alt="">
-                                            <div id="sending-gif" class="sending-gif d-none">
-                                                <img src="./images/globe_img.png" alt="icono de globo terraqueo">
-                                                <p>Estamos subiendo tu guifo...</p>
-                                                
-                                                <div class="progress-bar-container ml-0 w-240">
-                                                    
-                                                    <div class="video-progress-bar">
-                                                        <div class="cell1"></div>
-                                                        <div class="cell2"></div>
-                                                        <div class="cell3"></div>
-                                                        <div class="cell4"></div>
-                                                        <div class="cell5"></div>
-                                                        <div class="cell6"></div>
-                                                        <div class="cell7"></div>
-                                                        <div class="cell8"></div>
-                                                        <div class="cell9"></div>
-                                                        <div class="cell10"></div>
-                                                        <div class="cell11"></div>
-                                                        <div class="cell12"></div>
-                                                        <div class="cell13"></div>
-                                                        <div class="cell14"></div>
-                                                        <div class="cell15"></div>
-                                                        <div class="cell16"></div>
-                                                        <div class="cell17"></div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                
-                                                <p>Tiempo restante: <span>30 años</span> algunos minutos</p>
-                                            </div>
-                                            
-                                            
-                                            
-                                            
-                                        </div>
-                                        
-                                        <div class="video-buttons">
-                                            <div id="timerBlock" class="timer d-none">
-                                            </div>
-                                            
-                                            <div id="progressBar" class="progress-bar-container d-none">
-                                                <div class="play-button">
-                                                    <img src="./images/forward.svg" alt="">
-                                                </div>
+                                            <div class="progress-bar-container ml-0 w-240">
                                                 
                                                 <div class="video-progress-bar">
                                                     <div class="cell1"></div>
@@ -151,93 +106,114 @@
                                                 
                                             </div>
                                             
-                                            <div id="btnStartRecording" class="start-video">
-                                                <div><img src="./images/camera.svg" alt="camera-icon"></div>
-                                                <div class="start-video">
-                                                    Capturar
-                                                </div>
-                                            </div>
-                                            
-                                            <div id="btnStopRecording" class="start-video d-none">
-                                                <div><img src="./images/recording.svg" alt="camera-icon"></div>
-                                                <div class="start-video">
-                                                    Listo
-                                                </div>
-                                            </div>
-                                            
-                                            <button id="btnRestartCapture" class="d-none cancel-button">Repetir Captura</button>
-                                            
-                                            <button id="btnSendGif" class="start-video d-none">Subir Guifo</button>
-                                            
-                                            <button id="btnCancel" class="d-none cancel-button">Cancelar</button>
-                                            
+                                            <p>Tiempo restante: <span>30 años</span> algunos minutos</p>
                                         </div>
                                         
                                     </div>
                                     
-                                    <div id="gifSent" class="createGifs d-none">
-                                        <div class="finished-guif">
-                                            <div class="title1">
-                                                Guifo Subido Con Éxito
-                                                <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                    <div class="video-buttons">
+                                        <div id="timerBlock" class="timer d-none">
+                                        </div>
+                                        
+                                        <div id="progressBar" class="progress-bar-container d-none">
+                                            <div class="play-button">
+                                                <img src="./images/forward.svg" alt="">
                                             </div>
-                                            <div class="guifo-terminado row">
-                                                <div class="col">
-                                                    <img id="guif-creado" class="guif-creado" src="#" alt="guif generado">
-                                                </div>
-                                                <div class="col">
-                                                    <p>Guifo creado con éxito</p>
-                                                    <button id="copyGuif" class="btn-copy">Copiar enlace Guifo</button>
-                                                    <a href="https://i.giphy.com/media/QsPVastwBgV2ByqBLK/giphy.gif?cid=01e2c6ddeebfde10c875cc47ab8553fe56212d959439ea63&rid=giphy.gif" target="_blank" download><div id="downloadGuif" class="btn-copy">Descargar Guifo</div></a>
-                                                    
-                                                    
-                                                    <button id="btnDone" class="btn-ready">Listo</button>
-                                                    
-                                                </div>
+                                            
+                                            <div class="video-progress-bar">
+                                                <div class="cell1"></div>
+                                                <div class="cell2"></div>
+                                                <div class="cell3"></div>
+                                                <div class="cell4"></div>
+                                                <div class="cell5"></div>
+                                                <div class="cell6"></div>
+                                                <div class="cell7"></div>
+                                                <div class="cell8"></div>
+                                                <div class="cell9"></div>
+                                                <div class="cell10"></div>
+                                                <div class="cell11"></div>
+                                                <div class="cell12"></div>
+                                                <div class="cell13"></div>
+                                                <div class="cell14"></div>
+                                                <div class="cell15"></div>
+                                                <div class="cell16"></div>
+                                                <div class="cell17"></div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        <div id="btnStartRecording" class="start-video">
+                                            <div><img src="./images/camera.svg" alt="camera-icon"></div>
+                                            <div class="start-video">
+                                                Capturar
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="btnStopRecording" class="start-video d-none">
+                                            <div><img src="./images/recording.svg" alt="camera-icon"></div>
+                                            <div class="start-video">
+                                                Listo
+                                            </div>
+                                        </div>
+                                        
+                                        <button id="btnRestartCapture" class="d-none cancel-button">Repetir Captura</button>
+                                        
+                                        <button id="btnSendGif" class="start-video d-none">Subir Guifo</button>
+                                        
+                                        <button id="btnCancel" class="d-none cancel-button">Cancelar</button>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div id="gifSent" class="createGifs d-none">
+                                    <div class="finished-guif">
+                                        <div class="title1">
+                                            Guifo Subido Con Éxito
+                                            <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                        </div>
+                                        <div class="guifo-terminado row">
+                                            <div class="col">
+                                                <img id="guif-creado" class="guif-creado" src="#" alt="guif generado">
+                                            </div>
+                                            <div class="col">
+                                                <p>Guifo creado con éxito</p>
+                                                <button id="copyGuif" class="btn-copy">Copiar enlace Guifo</button>
+                                                <button class="btn-copy">Descargar Guifo</button>
+                                                
+                                                <button id="btnDone" class="btn-ready">Listo</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
                                 </div>
+                                
                             </div>
                         </div>
-                        
                     </div>
-                    
-                    <!-- MIS GIFOS //////////////////////////////////////////////////////////////////////////////////////////////// 8 -->
-                    <div>
-                        <div class="row">
-                            <div class="col p-0 section2">
-                                <div>Mis guifos</div>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                        <div id="generatedGuifs" class="row mb-3 space-between">
-                        </div>
-                        
-                        
-                    </div>
-                    
-                    
-                    
-                    
-                    
                     
                 </div>
+                
+                <!-- MIS GIFOS //////////////////////////////////////////////////////////////////////////////////////////////// 8 -->
+                <div>
+                    <div class="row">
+                        <div class="col p-0 section2">
+                            <div>Mis guifos</div>
+                        </div>
+                    </div>
+                    
+                    <div id="generatedGuifs" class="row mb-3 space-between">
+                    </div>
+                </div>
+                
             </div>
         </div>
-        
-        
-        <!-- JAVASCRIPT -->
-        <script src="scripts/create-gifos.js"></script>
-        <!-- RECORD RTC -->
-        <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-    </body>
+    </div>
     
     
-    
-    </html>
+    <!-- JAVASCRIPT -->
+    <script src="scripts/create-gifos.js"></script>
+    <!-- RECORD RTC -->
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+</body>
+</html>

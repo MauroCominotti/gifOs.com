@@ -16,7 +16,11 @@ window.onload = function () {
     else
     changeStylesheet2();
     
+    document.getElementById('changeLinks1').addEventListener('click', changeStylesheet1, false);
+    document.getElementById('changeLinks2').addEventListener('click', changeStylesheet2, false);
     
+    document.getElementById('changeLinks').addEventListener('click', showContent, false);
+
     logo.addEventListener('click', function () {
         document.getElementById('textInput').value = ""; //limpio el input de texto
         getSuggestions();
@@ -274,7 +278,6 @@ function fetchGifs(url) {
 }
 
 // Show search, random and trending gifs ---------------------------------------
-//FALTA HACER QUE LOS ESPACIOS EN BLANCO SE PUEDAN MANDAR COMO %20 EN LA URL
 function showSearchGifs(data) {
     let box;
     document.getElementById('showSearchTitle').textContent = document.getElementById('textInput').value + " (resultados)";
