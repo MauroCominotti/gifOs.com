@@ -10,10 +10,20 @@ var logo;
 var urlCopiedGif;
 
 window.onload = function () {
+    logo = document.querySelectorAll('.img1');
+    if(getUrlVars()["style"]==="2")
+    changeStylesheet1();
+    else
+    changeStylesheet2();
     
     matches = document.querySelectorAll('div.principalCol > div');
     
     //document.getElementById('arrowBack').addEventListener('click', function () { for (i = 0; i < matches.length; i++) { if (i !== 6) { toggleDisplay(matches[i]) } } });
+    
+    logo[0].addEventListener('click',openIndex, false);
+    logo[1].addEventListener('click',openIndex, false);
+    document.getElementById('cancelGif').addEventListener('click',openIndex, false);
+    document.getElementById('arrowBack').addEventListener('click',openIndex, false);
     
     getMyGifs();
     
@@ -117,12 +127,12 @@ window.onload = function () {
     document.getElementById('btnSendGif').addEventListener('click', sendGif, false);
     
     gifFinished = document.getElementById('finishedGif');
-
+    
     document.getElementById('copyGuif').addEventListener('click', copyUrl, false);
     document.getElementById('downloadGuif').addEventListener('click', downloadGuif, false);
     
     document.getElementById('btnDone').addEventListener('click', function () {
-       
+        
         const link = document.createElement('a');
         link.href = 'index.html';
         document.body.appendChild(link);
@@ -161,7 +171,43 @@ function toggleDisplay2(x) {
     
 }
 
+// CAMBIAR ESTILOS ------------------------------------------------------------------------------
+function changeStylesheet1() {
+    document.getElementById('styleSheets').href = 'styles/style2.css';
+    logo[0].src = 'images/gifOF_logo.png';
+    logo[1].src = 'images/gifOF_logo.png';
+};
 
+function changeStylesheet2() {
+    document.getElementById('styleSheets').href = 'styles/style1.css';
+    logo[0].src = 'images/gifOF_logo_dark.png';
+    logo[1].src = 'images/gifOF_logo_dark.png';
+};
+
+// Read a page's GET URL variables and return them as an associative array.
+//https://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+function openIndex(){
+    const link = document.createElement('a');
+    if(document.getElementById('styleSheets').href.includes('styles/style1.css'))
+    link.href = 'index.html?style=1';
+    else
+    link.href = 'index.html?style=2';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 // ___________________________________________________________________ GIPHY ___________________________________________________________________
 //https://developers.giphy.com/docs/optional-settings/#rendition-guide
 var apiKey = "&api_key=qZxHL1NNfanD7sSs4fFgauIXTeE8n2z3";
@@ -169,14 +215,14 @@ var apiKey2 = "&api_key=LIVDSRZULELA"
 
 function getMyGifs() {
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         var storage = localStorage.getItem('mygif' + i);
         if (storage !== null) {
             storage = JSON.parse(storage);
             var gifID = "&ids=" + storage.id;
             var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
             fetchGifs(url).then(data => {
-                showIDGifs(data, i)
+                showIDGifs(data, i);
             })
             .catch(() => {
                 showIDGifs(null, i)
@@ -185,6 +231,23 @@ function getMyGifs() {
         else {
             showIDGifs(null, i)
         }
+    }
+}
+function getMyLastGif(i) {
+    var storage = localStorage.getItem('mygif' + i);
+    if (storage !== null) {
+        storage = JSON.parse(storage);
+        var gifID = "&ids=" + storage.id;
+        var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
+        fetchGifs(url).then(data => {
+            showIDGifs(data, i);
+        })
+        .catch(() => {
+            showIDGifs(null, i)
+        });
+    }
+    else {
+        showIDGifs(null, i)
     }
 }
 
@@ -219,8 +282,29 @@ function fetchGifs(url) {
 }
 
 // Show search, random and trending gifs ---------------------------------------
-
+contador=0;
 function showIDGifs(data, i) {
+    let box = document.createElement('div');
+    box.classList.add('boxTransparent');
+    
+    let img = document.createElement('img');
+    img.classList.add('trendingGif');
+    img.setAttribute("id", "mygif"+i);
+    img.setAttribute("alt", "misgifs"+i);
+    
+    
+    box.appendChild(img);
+    
+    if(contador === 4){
+        box.classList.add('largeBox');
+        contador = 0;
+    }
+    else{
+        contador++;
+    }
+    
+    document.getElementById('generatedGuifs').appendChild(box);
+    
     if (data !== null) {
         document.getElementById('mygif' + i).src = data.data[0].images.original.url;
     }
@@ -301,7 +385,7 @@ function sendGif() {
         document.getElementById('gifSent').classList.remove('d-none'); document.getElementById('generatingGif').classList.add('d-none'); toggleDisplay(matches[1]);
         
         // urlCopiedGif = result.data.source_image_url;
-        getMyGifs();
+        getMyLastGif(localStorage.length);
         getGeneratedGuif();
     })
     .catch((error) => {

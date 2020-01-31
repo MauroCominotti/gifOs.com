@@ -10,8 +10,13 @@ var logo;
 var urlCopiedGif;
 
 window.onload = function () {
-    
     logo = document.querySelector('.img1');
+    if(getUrlVars()["style"]==="2")
+    changeStylesheet1();
+    else
+    changeStylesheet2();
+    
+    
     logo.addEventListener('click', function () {
         document.getElementById('textInput').value = ""; //limpio el input de texto
         getSuggestions();
@@ -50,11 +55,7 @@ window.onload = function () {
     document.getElementById('createGifs').addEventListener('click', function () {
         document.getElementById('textInput').value = "";//limpio el input de texto
         getSuggestions();
-        const link = document.createElement('a');
-        link.href = 'create-gifos.html';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        openCreateGuifos();
     });
     
     getMyGifs();
@@ -89,7 +90,9 @@ window.onload = function () {
     getTrendingResults();
     
     
-    
+    for (let i = 0; i < 4; i++) {
+        document.getElementById('seeMore'+i).addEventListener('click', function () {showSeeMore(i) }, false);
+    }
     
 };
 
@@ -119,21 +122,38 @@ function toggleDisplay2(x) {
     }
     
 }
-
-
+// Read a page's GET URL variables and return them as an associative array.
+//https://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+function openCreateGuifos(){
+    const link = document.createElement('a');
+    if(document.getElementById('styleSheets').href.includes('styles/style1.css'))
+    link.href = 'create-gifos.html?style=1';
+    else
+    link.href = 'create-gifos.html?style=2';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 // CAMBIAR ESTILOS ------------------------------------------------------------------------------
 function changeStylesheet1() {
     document.getElementById('styleSheets').href = 'styles/style2.css';
-    logo[0].src = 'images/gifOF_logo.png';
-    logo[1].src = 'images/gifOF_logo.png';
-    logo[2].src = 'images/gifOF_logo.png';
+    logo.src = 'images/gifOF_logo.png';
 };
 
 function changeStylesheet2() {
     document.getElementById('styleSheets').href = 'styles/style1.css';
-    logo[0].src = 'images/gifOF_logo_dark.png';
-    logo[1].src = 'images/gifOF_logo_dark.png';
-    logo[2].src = 'images/gifOF_logo_dark.png';
+    logo.src = 'images/gifOF_logo_dark.png';
 };
 
 // MENU BUTTON ---------------------------------------------------------------------------------------
@@ -183,7 +203,7 @@ function getSuggestions() {
     if (text != null && text.value !== "") {
         if (count === 0) { toggleDisplay2(document.getElementById('suggestionBox')); count = 1; }
         var query = "&tag=" + text.value;
-        var url = "https://api.tenor.com/v1/search_suggestions?" + apiKey2 + query + "&limit=4"; //LA URL ES DE TENOR! CAMBIAR A GIPHY!!!
+        var url = "https://api.tenor.com/v1/search_suggestions?" + apiKey2 + query + "&limit=4"; //LA URL ES DE TENOR! GIPHY NO TIENE!!!
         for (let i = 0; i < 4; i++) {
             fetchGifs(url).then(data => {
                 showSuggestions(data, i)
@@ -219,14 +239,14 @@ function replaceSearch(text) {
 
 function getMyGifs() {
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
         var storage = localStorage.getItem('mygif' + i);
         if (storage !== null) {
             storage = JSON.parse(storage);
             var gifID = "&ids=" + storage.id;
             var url = "https://api.giphy.com/v1/gifs?" + apiKey + gifID;
             fetchGifs(url).then(data => {
-                showIDGifs(data, i)
+                showIDGifs(data, i);
             })
             .catch(() => {
                 showIDGifs(null, i)
@@ -265,19 +285,13 @@ function showSearchGifs(data) {
     }
 };
 function showSuggestions(data) {
-    if (data.results.length !== 0) {
-        for (i = 0; i < 4; i++) {
-            suggestion = document.getElementById('suggestion' + i);
-            suggestion.textContent = data.results[i];
-        }
+    for (i = 0; i < 4; i++) {
+        suggestion = document.getElementById('suggestion' + i);
+        if(data.results[i]!==undefined)
+        suggestion.textContent = data.results[i];
+        else
+        suggestion.textContent = "No hay resultados";
     }
-    else {
-        for (i = 0; i < 4; i++) {
-            suggestion = document.getElementById('suggestion' + i);
-            suggestion.textContent = "No hay resultados";
-        }
-    }
-    
 }
 function showRandomGifs(data, i) {
     let box;
@@ -296,11 +310,37 @@ function showTrendingGifs(data) {
         box.src = data.data[i].images.original.url;
     }
 };
+var contador=0;
 function showIDGifs(data, i) {
+    let box = document.createElement('div');
+    box.classList.add('boxTransparent');
+
+    let img = document.createElement('img');
+    img.classList.add('trendingGif');
+    img.setAttribute("id", "mygif"+i);
+    img.setAttribute("alt", "misgifs"+i);
+
+
+    box.appendChild(img);
+
+    if(contador === 4){
+        box.classList.add('largeBox');
+        contador = 0;
+    }
+    else{
+        contador++;
+    }
+
+    document.getElementById('generatedGuifs').appendChild(box);
+
     if (data !== null) {
         document.getElementById('mygif' + i).src = data.data[0].images.original.url;
     }
     else {
         document.getElementById('mygif' + i).src = "https://media0.giphy.com/media/l1J9EdzfOSgfyueLm/giphy.gif?cid=790b7611d6930cac4c17e5da5fc76ea10d221f14cac19d58&rid=giphy.gif";
     }
+}
+function showSeeMore(i){
+    document.getElementById('textInput').value = document.getElementById('gifTitle'+i).innerHTML.replace('#', '');
+    document.getElementById('btnSearch').click();
 }

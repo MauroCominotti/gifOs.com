@@ -1,8 +1,23 @@
 *{
     font-family: 'Chakra Petch', sans-serif;
+    box-sizing: border-box;
 }
 body{
     background-color: #110038 ;
+    line-height: 1.5;
+    margin: 0;
+}
+button, input {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    border-radius: 0;
+}
+button:not(:disabled) {
+    cursor: pointer;
 }
 .container-fluid {
     width: 100%;
@@ -23,6 +38,52 @@ body{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin:0;
+}
+.col,
+.col-2,
+.col-10,
+.col-12{
+    position: relative;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px
+}
+.col {
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	max-width: 100%
+}
+.col-2 {
+	-ms-flex: 0 0 16.666667%;
+	flex: 0 0 16.666667%;
+	max-width: 16.666667%
+}
+.col-10 {
+	-ms-flex: 0 0 83.333333%;
+	flex: 0 0 83.333333%;
+	max-width: 83.333333%
+}
+.col-12 {
+	-ms-flex: 0 0 100%;
+	flex: 0 0 100%;
+	max-width: 100%
+}
+.p-0{
+    padding: 0;
+}
+.d-flex{
+    display: flex;
+}
+.justify-content-start{
+    justify-content: flex-start;
+}
+.justify-content-end{
+    justify-content: flex-end;
+}
+.align-items-center{
+    align-items: center;
 }
 .principalCol{
     flex: 0 0 1200px;
@@ -201,8 +262,41 @@ input::placeholder{
     background-color: transparent;
     margin-bottom: 16px;
 }
+.hover-effect{
+    width: 294px;
+    height: 304px;
+    display: flex;
+    justify-content: center;
+    padding: .25rem;
+    background: transparent;
+    margin-bottom: 16px;
+}
+.hover-effect .boxTransparent{
+    position: relative;
+}
+.hover-effect:hover{
+    background: #E6E6E6;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+.hover-effect:hover .tags{
+    display: block;
+}
+.boxTransparent:hover{
+    border: 1px dotted #110038;
+}
 .largeBox{
     width:592px;
+}
+.largeBoxTendencies{
+    width: 595px;
+}
+.tags{
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+    width: 100%;
 }
 .title2{
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
@@ -220,9 +314,6 @@ input::placeholder{
     float: right;
     margin: 0.3rem;
 }
-.relative{
-    position:relative;
-}
 .suggestionBox{
     margin: 2px;
 }
@@ -232,6 +323,7 @@ input::placeholder{
     background: #F0F0F0;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    cursor:pointer;
 }
 .suggestionBox div:hover{
     border: 1px solid #110038;
@@ -257,8 +349,6 @@ input::placeholder{
     font-size: 14px;
     letter-spacing: 0;
     line-height: 18px;
-}
-.gifBoxBtn a{
     text-decoration: none;
     padding: 0.5rem;
     display: block;
@@ -274,7 +364,7 @@ input::placeholder{
     width: 100%;
 }
 .trendingGif {
-    height: 298px;
+    height: 100%;
     width: 100%;
 }
 /* CREAR GIFS ////////////////////////////////////////////////////////////////*/
@@ -319,7 +409,24 @@ input::placeholder{
     margin: 10px 0;
 }
 .d-none{
-    display:none;
+    display:none !important;
+}
+#arrowBack, #arrowBack2{
+    cursor:pointer!important;
+}
+.cancel-button{
+    width: 144px;
+    background: #FFF4FD;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    margin-left: auto!important;
+    color: #110038;
+}
+#cancelGif{
+    margin-left: 45%!important;
+}
+#startGif{
+    width: 144px;
 }
 #arrowBack, #arrowBack2{
     cursor:pointer;
@@ -376,6 +483,10 @@ button:disabled {
     display: flex;
     justify-content: center;
 }
+#btnStartRecording,
+#btnStopRecording{
+    cursor: pointer;
+}
 #btnStartRecording div,
 #btnStartRecording div + div, 
 #btnSendGif{
@@ -428,8 +539,6 @@ button:disabled {
     background: #B4B4B4;
     box-shadow: inset 2px 2px 0 0 #000000, inset -2px -2px 0 0 #FFFCFC;
 }
-
-
 .video-progress-bar div {
     width:12px;
     height:20px;
@@ -581,7 +690,6 @@ button:disabled {
         opacity: 1;
     }
 }
-
 @keyframes fadeOutSuggestions{
     0%{
         opacity: 1;
@@ -590,11 +698,6 @@ button:disabled {
         opacity: 0;
     }
 }
-
-
-
-
-
 /* MEDIA QUERIES  ////////////////////////////////////////////////////////////////*/
 @media only screen and (min-width: 1400px){
     .principalRow{

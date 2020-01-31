@@ -8,287 +8,307 @@
     <title>gifOS.com</title>
     
     <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- FIRST AND SECOND STYLESHEET -->
-    <link id="styleSheets" rel="stylesheet" href="styles/style1.css">
-    <!-- GOOGLE FONTS -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
-    rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+        <!-- FIRST AND SECOND STYLESHEET -->
+        <link id="styleSheets" rel="stylesheet" href="styles/style1.css">
+        <!-- GOOGLE FONTS -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"
+        rel="stylesheet">
+        
+        
+        
+    </head>
     
-    
-    
-</head>
-
-<body>
-    <div class="row-fluid">
-        <div class="col upbar">
-            <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
-        </div>
-    </div>
-    
-    <div class="container-fluid">
-        <div class="principalRow">
-            <div class="principalCol">
-                
-                <div class="row pad1">
-                    <div class="col-2 p-0 d-flex justify-content-start align-items-center">
-                        <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
-                    </div>
-                    <div class="col-10 d-flex justify-content-end align-items-center">
-                        <button id="createGifs" class="btnTopics pr">Crear Guifos</button>
-                        <div class="dropDown">
-                            <div class="btnTopics" id="changeLinks" onclick="showContent()">
-                                Elegir tema
-                                <div class="btnIcon">
-                                    <img class="downArrow" src="./images/forward.svg" alt="down arrow">
-                                </div>
-                            </div>
-                            
-                            <div id="dropdownBtn" class="dropdown-content">
-                                <div id="changeLinks1" onclick="changeStylesheet1()">Sailor Day</div>
-                                <div id="changeLinks2" onclick="changeStylesheet2()">Sailor Night</div>
-                            </div>
-                        </div>
-                        <a href="#" id="myGifs">Mis Guifos</a>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 p-0 section1">
-                        <div class="title1">
-                            Buscar
-                        </div>
-                        <div>
-                            <input type="text" id="textInput" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
-                            
-                            <button class="searchbutton" id="btnSearch">
-                                <img src="images/Combined Shape.svg" alt="">
-                                <span>Buscar</span>
-                            </button>
-                        </div>
-                        
-                    </div>
-                    
-                    
-                    
-                    <div class="col-12 p-0 section1">
-                        <div class="suggestionBox d-none" id='suggestionBox'>
-                            <div id="suggestion0"></div>
-                            <div id="suggestion1"></div>
-                            <div id="suggestion2"></div>
-                            <div id="suggestion3"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- CAJAS DE GIFS /////////////////////////////////////////////////////////////////////////// -->
-                <!-- Hoy te sugerimos /////////////////////////////////////////////////////////////////////////// 2 -->
-                <div class="row">
-                    <div class="col p-0 section2">
-                        <div>Hoy te sugerimos:</div>
-                    </div>
-                </div>
-                
-                <div class="row space-between ">
-                    
-                    <div class="box">
-                        <div class="title2">
-                            <div>
-                                <span id="gifTitle0"></span>
-                                <a href="#"><img src="./images/button3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="gifBox">
-                            <img id="gif0" src="#" alt="gif0" class="gif">
-                            <div class="gifBoxBtn"><a href="#">Ver más...</a></div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="title2">
-                            <div>
-                                <span id="gifTitle1"></span>
-                                <a href="#"><img src="./images/button3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="gifBox">
-                            <img id="gif1" src="#" alt="gif1" class="gif">
-                            <div class="gifBoxBtn"><a href="#">Ver más...</a></div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="title2">
-                            <div>
-                                <span id="gifTitle2"></span>
-                                <a href="#"><img src="./images/button3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="gifBox">
-                            <img id="gif2" src="#" alt="gif2" class="gif">
-                            <div class="gifBoxBtn"><a href="#">Ver más...</a></div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="title2">
-                            <div>
-                                <span id="gifTitle3"></span>
-                                <a href="#"><img src="./images/button3.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="gifBox">
-                            <img id="gif3" src="#" alt="gif3" class="gif">
-                            <div class="gifBoxBtn"><a href="#">Ver más...</a></div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- Tendencias /////////////////////////////////////////////////////////////////////////// 4 -->
-                <div class="row">
-                    <div class="col p-0 section2">
-                        <div>Tendencias:</div>
-                    </div>
-                </div>
-                
-                <div class="row mb-3 space-between">
-                    
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif4" id="gif4" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif5" id="gif5" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif6" id="gif6" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif7" id="gif7" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent largeBox">
-                        <img src="#" alt="gif8" id="gif8" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif9" id="gif9" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif10" id="gif10" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif11" id="gif11" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent">
-                        <img src="#" alt="gif12" id="gif12" class="trendingGif">
-                    </div>
-                    <div class="boxTransparent largeBox">
-                        <img src="#" alt="gif13" id="gif13" class="trendingGif">
-                    </div>
-                    
-                </div>
-                
-                <!-- BUSQUEDAS /////////////////////////////////////////////////////////////////////////// '6'-->
-                <div class="d-none">
-                    <div class="row">
-                        <div class="col p-0 section2">
-                            <div id="showSearchTitle"></div>
-                        </div>
-                    </div>
-                    <div class="row mb-3 space-between">
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif0" id="show_gif0" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif1" id="show_gif1" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif2" id="show_gif2" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif3" id="show_gif3" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent largeBox">
-                            <img src="#" alt="show_gif4" id="show_gif4" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif5" id="show_gif5" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif6" id="show_gif6" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif7" id="show_gif7" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="#" alt="show_gif8" id="show_gif8" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent largeBox">
-                            <img src="#" alt="show_gif9" id="show_gif9" class="trendingGif">
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-                
-                <!-- div para reemplazar crear guifs -->
-               <div></div>
-                
-                <!-- MIS GIFOS //////////////////////////////////////////////////////////////////////////////////////////////// 8 -->
-                <div class="d-none">
-                    <div class="row">
-                        <div class="col p-0 section2">
-                            <div>Mis guifos</div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div class="row mb-3 space-between">
-                        
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs0" id="mygif0" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs1" id="mygif1" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs2" id="mygif2" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs3" id="mygif3" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent largeBox">
-                            <img src="" alt="misgifs4" id="mygif4" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs5" id="mygif5" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs6" id="mygif6" class="trendingGif">
-                        </div>
-                        <div class="boxTransparent">
-                            <img src="" alt="misgifs7" id="mygif7" class="trendingGif">
-                        </div>
-                        
-                    </div>
-                    
-                    
-                </div>
-                
-                
-                
-                
-                
-                
+    <body>
+        <div class="row">
+            <div class="col upbar">
+                <div>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</div>
             </div>
         </div>
-    </div>
+        
+        <div class="container-fluid">
+            <div class="principalRow">
+                <div class="principalCol">
+                    
+                    <div class="row pad1">
+                        <div class="col-2 p-0 d-flex justify-content-start align-items-center">
+                            <img class="img1" src="images/gifOF_logo_dark.png" alt="logo">
+                        </div>
+                        <div class="col-10 d-flex justify-content-end align-items-center">
+                            <button id="createGifs" class="btnTopics pr">Crear Guifos</button>
+                            <div class="dropDown">
+                                <div class="btnTopics" id="changeLinks" onclick="showContent()">
+                                    Elegir tema
+                                    <div class="btnIcon">
+                                        <img class="downArrow" src="./images/forward.svg" alt="down arrow">
+                                    </div>
+                                </div>
+                                
+                                <div id="dropdownBtn" class="dropdown-content">
+                                    <div id="changeLinks1" onclick="changeStylesheet1()">Sailor Day</div>
+                                    <div id="changeLinks2" onclick="changeStylesheet2()">Sailor Night</div>
+                                </div>
+                            </div>
+                            <a href="#" id="myGifs">Mis Guifos</a>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 p-0 section1">
+                            <div class="title1">
+                                Buscar
+                            </div>
+                            <div>
+                                <input type="text" id="textInput" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…">
+                                
+                                <button class="searchbutton" id="btnSearch">
+                                    <img src="images/combined-shape.svg" alt="">
+                                    <span>Buscar</span>
+                                </button>
+                            </div>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="col-12 p-0 section1">
+                            <div class="suggestionBox d-none" id='suggestionBox'>
+                                <div id="suggestion0"></div>
+                                <div id="suggestion1"></div>
+                                <div id="suggestion2"></div>
+                                <div id="suggestion3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CAJAS DE GIFS /////////////////////////////////////////////////////////////////////////// -->
+                    <!-- Hoy te sugerimos /////////////////////////////////////////////////////////////////////////// 2 -->
+                    <div class="row">
+                        <div class="col p-0 section2">
+                            <div>Hoy te sugerimos:</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row space-between ">
+                        
+                        <div class="box">
+                            <div class="title2">
+                                <div>
+                                    <span id="gifTitle0"></span>
+                                    <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="gifBox">
+                                <img id="gif0" src="#" alt="gif0" class="gif">
+                                <div id="seeMore0" class="gifBoxBtn"><a href="#">Ver más...</a></div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title2">
+                                <div>
+                                    <span id="gifTitle1"></span>
+                                    <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="gifBox">
+                                <img id="gif1" src="#" alt="gif1" class="gif">
+                                <div id="seeMore1" class="gifBoxBtn"><a href="#">Ver más...</a></div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title2">
+                                <div>
+                                    <span id="gifTitle2"></span>
+                                    <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="gifBox">
+                                <img id="gif2" src="#" alt="gif2" class="gif">
+                                <div id="seeMore2" class="gifBoxBtn"><a href="#">Ver más...</a></div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="title2">
+                                <div>
+                                    <span id="gifTitle3"></span>
+                                    <a href="#"><img src="./images/button3.svg" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="gifBox">
+                                <img id="gif3" src="#" alt="gif3" class="gif">
+                                <div id="seeMore3" class="gifBoxBtn"><a href="#">Ver más...</a></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!-- Tendencias /////////////////////////////////////////////////////////////////////////// 4 -->
+                    <div class="row">
+                        <div class="col p-0 section2">
+                            <div>Tendencias:</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3 space-between" style="margin: -.25rem;">
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif4" id="gif4" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif5" id="gif5" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif6" id="gif6" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif7" id="gif7" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect largeBoxTendencies">
+                            <div class="boxTransparent largeBoxTendencies">
+                                <img src="#" alt="gif8" id="gif8" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif9" id="gif9" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif10" id="gif10" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif11" id="gif11" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect">
+                            <div class="boxTransparent">
+                                <img src="#" alt="gif12" id="gif12" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-effect largeBoxTendencies">
+                            <div class="boxTransparent largeBoxTendencies">
+                                <img src="#" alt="gif13" id="gif13" class="trendingGif">
+                                <div class="tags">
+                                    #Giphy #gifs #fun #amusing #enjoy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- BUSQUEDAS /////////////////////////////////////////////////////////////////////////// '6'-->
+                    <div class="d-none">
+                        <div class="row">
+                            <div class="col p-0 section2">
+                                <div id="showSearchTitle"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 space-between">
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif0" id="show_gif0" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif1" id="show_gif1" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif2" id="show_gif2" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif3" id="show_gif3" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent largeBox">
+                                <img src="#" alt="show_gif4" id="show_gif4" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif5" id="show_gif5" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif6" id="show_gif6" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif7" id="show_gif7" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent">
+                                <img src="#" alt="show_gif8" id="show_gif8" class="trendingGif">
+                            </div>
+                            <div class="boxTransparent largeBox">
+                                <img src="#" alt="show_gif9" id="show_gif9" class="trendingGif">
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!-- div para reemplazar crear guifs -->
+                    <div></div>
+                    
+                    <!-- MIS GIFOS //////////////////////////////////////////////////////////////////////////////////////////////// 8 -->
+                    <div class="d-none">
+                        <div class="row">
+                            <div class="col p-0 section2">
+                                <div>Mis guifos</div>
+                            </div>
+                        </div>
+                        
+                        <div id="generatedGuifs" class="row mb-3 space-between">
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- JAVASCRIPT -->
+        <script src="scripts/javascript.js"></script>
+        <!-- RECORD RTC -->
+        <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    </body>
     
     
     
-</body>
-
-<!-- JAVASCRIPT -->
-<script src="scripts/javascript.js"></script>
-<!-- RECORD RTC -->
-<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-
-</html>
+    </html>
