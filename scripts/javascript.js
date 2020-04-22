@@ -206,13 +206,13 @@ function getSuggestions() {
     
     if (text != null && text.value !== "") {
         if (count === 0) { toggleDisplay2(document.getElementById('suggestionBox')); count = 1; }
-        // var query = "&tag=" + text.value;
-        // var url = "https://api.tenor.com/v1/search_suggestions?" + apiKey2 + query + "&limit=4"; //LA URL ES DE TENOR! GIPHY NO TIENE!!!
-        // for (let i = 0; i < 4; i++) {
-        //     fetchGifs(url).then(data => {
-        //         showSuggestions(data, i)
-        //     });
-        // }
+        var query = "&tag=" + text.value;
+        var url = "https://api.tenor.com/v1/search_suggestions?" + apiKey2 + query + "&limit=4"; //LA URL ES DE TENOR! GIPHY NO TIENE!!!
+        for (let i = 0; i < 4; i++) {
+            fetchGifs(url).then(data => {
+                showSuggestions(data, i)
+            });
+        }
     }
     else {
         if (!document.getElementById('suggestionBox').classList.contains('d-none')) {
